@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><patients>
+ <patient datumEnUur="25/01/2017-13:47" naamPatient="Lennart Schelfhout" geboorteDatum="09/10/1997" naamVerpleegkundige="Philippe Possemiers" diagnose="ziek">
+      <description>De Antwerpse marathon</description>
+      
+    </patient>
+</patients>

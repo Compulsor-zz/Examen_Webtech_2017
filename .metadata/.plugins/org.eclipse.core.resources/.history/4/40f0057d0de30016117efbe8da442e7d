@@ -1,0 +1,51 @@
+package edu.ap.fileReader;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+
+public class ReadFile {
+	
+	private static String FILE = "C:/Users/schel/workspace/Quotes/oscar_wilde.txt";
+	private static String fileContent;
+	
+	public static String readFile() throws FileNotFoundException, IOException {
+		try(BufferedReader br = new BufferedReader(new FileReader(FILE))) {
+		    StringBuilder sb = new StringBuilder();
+		    String line = br.readLine();
+
+		    while (line != null) {
+		        sb.append(line);
+		        sb.append(System.lineSeparator());
+		        line = br.readLine();
+		    }
+		    fileContent = sb.toString();
+		}
+		
+		return fileContent;
+	}
+	
+	public static String getQuoteFromWord(String word) {
+		String quote = "";
+		String fileContent = "";
+		try {
+			fileContent = readFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String[] splitted = fileContent.split("\\b+");
+		
+		if(Arrays.asList(splitted).contains(word)) {
+			// TODO: return correct quote
+			quote = "QUOTE";
+		}else{
+			System.out.println("Quote met opgegeven woord niet gevonden");
+		}
+		
+		return quote;
+	}
+
+}

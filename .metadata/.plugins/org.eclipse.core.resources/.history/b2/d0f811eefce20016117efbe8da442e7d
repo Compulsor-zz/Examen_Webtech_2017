@@ -1,0 +1,25 @@
+package edu.ap.webtech;
+
+import org.restlet.resource.ClientResource;
+
+public class TestClient {
+
+	public static void main(String[] args) {
+		
+		 try {
+         	ClientResource resource = new ClientResource("http://localhost:8181/race/26/");
+         	// Post a new race
+         	String race = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
+         	race += "<runner age=\"19\" first_name=\"Karen\" id=\"4\" last_name=\"Faes\"><uri>race/26/runner/4</uri>";
+         	race += "</runner>";
+     		resource.post(race);
+     		// get the response
+         	System.out.println(resource.getResponseEntity().getText());
+         }
+         catch (Exception e) {
+             System.out.println("In main : " + e.getMessage());
+         }
+
+	}
+
+}

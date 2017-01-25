@@ -1,0 +1,14 @@
+package edu.ap.webtech;
+
+import org.restlet.resource.ServerResource;
+
+import edu.ap.xml.XMLParser;
+
+public class ZiekenhuisResource extends ServerResource {
+	
+	@Post("txt"){
+		public String addPatient(String patient){
+			XMLParser parser = new XMLParser();
+			return parser.addPatient(patient);
+		}
+	}

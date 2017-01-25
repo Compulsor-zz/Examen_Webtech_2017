@@ -1,0 +1,46 @@
+package edu.ap.webtech	;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.restlet.resource.ClientResource;
+
+public class HospitalClient {
+
+    
+ 	@SuppressWarnings("unchecked")
+ 	public static void main(String[] args) throws IOException {
+  
+ 		ClientResource resource = new ClientResource("http://127.0.0.1:8181/ziekenhuis/registraties");
+ 		
+ 		JSONObject json = new JSONObject();
+    	json.put("datum", "25/01/2017"); 
+    	json.put("naamPatient", "Lennart Schelfhout");
+    	json.put("geboorteDatum", "09/10/1997");
+    	json.put("naamVerpleegkundige", "Philippe Possemiers");
+    	json.put("diagnose", "Ziek");
+		resource.post(json.toString());
+    	json.put("datum", "25/01/2017");
+    	json.put("naamPatient", "Jérémy Keusters");
+    	json.put("geboorteDatum", "13/06/1997");
+    	json.put("naamVerpleegkundige", "Nicolas Goris");
+    	json.put("diagnose", "Voedselvergiftiging");
+		resource.post(json.toString());
+    	resource.get().write(System.out);
+    	System.out.println();
+    	
+        JSONObject obj1 = new JSONObject(resource.get(String.class));
+        JSONArray array1 = obj1.getJSONArray("result");
+       
+        for(int i = 0; i < array1.length(); i++) {
+            JSONObject obj2 = array1.getJSONObject(i);
+     		try (FileWriter file = new FileWriter("/Users/schel/desktop/patients.txt")) {
+     			file.write(obj2.toString());
+     			System.out.println("Successfully Copied JSON Object to File...");
+     			System.out.println("\nJSON Object: " + obj2);
+     		}
+         }
+ 	}
+    }

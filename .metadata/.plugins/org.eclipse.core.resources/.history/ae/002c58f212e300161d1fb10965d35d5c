@@ -1,0 +1,25 @@
+package edu.ap.webtech;
+
+import java.util.ArrayList;
+
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.restlet.resource.Get;
+import org.restlet.resource.Post;
+import org.restlet.resource.ServerResource;
+
+public class HospitalResource extends ServerResource {
+
+	
+	@Get("html")
+	public String getPatients() {
+		XMLParser parser = new XMLParser();
+		return parser.getPatients();
+	}
+	
+	@Post("txt")
+	public String addPatient(String xml) {
+		XMLParser parser = new XMLParser();
+		return parser.addPatient(xml);
+	}
+}

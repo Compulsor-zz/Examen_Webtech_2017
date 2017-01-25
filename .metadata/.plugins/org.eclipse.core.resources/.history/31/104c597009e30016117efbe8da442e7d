@@ -1,0 +1,26 @@
+package edu.ap.webtech;
+
+import org.restlet.resource.ClientResource;
+
+public class TestClient {
+
+	public static void main(String[] args) {
+		
+		 try {
+         	ClientResource resource = new ClientResource("http://localhost:8080/patients");
+         	// Post a new race
+         	String patient = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
+         	patient += "<patient datumEnUur=\"3/01/2017-13:47\" naamPatient=\"Kurt Schelfhout\" geboorteDatum=\"14/06/1964\" naamVerpleegkundige=\"Philippe Possemiers\" diagnose=\"ziek\">";
+         	patient += "<description> Patiënt 2 </description>";
+         	patient += "</patient>";
+     		resource.post(patient);
+     		// get the response
+         	System.out.println(resource.getResponseEntity().getText());
+         }
+         catch (Exception e) {
+             System.out.println("In main : " + e.getMessage());
+         }
+
+	}
+
+}

@@ -1,0 +1,9 @@
+3/ (1 punt) Waarom kunnen REST en SOAP eigenlijk niet met elkaar vergeleken worden, maw wat is het fundamentele verschil tussen beiden?
+
+REST is een architectuur. Het geeft resultaten weer de leesbaar zijn voor ons. Verder is het ook stateless, 'easily cacheable' en vaak performt het beter.
+SOAP is een protocol dat bovenop FTP, HTPP, ... kan runnen. Verder is het ook type-safe, wat REST standaard niet is.
+REST ondersteunt XML, JSON, 'plain text', ... Wat veel meer is in vergelijking met SOAP (wat enkel XML hanteert.).
+
+5/ (3 punten) Eén van de grote voordelen van SOAP XML is type safety. Beschrijf (kort!) twee simpele manieren waarop je dit in REST ook zou kunnen implementeren gebruik makend van standaard libraries.
+	- Door het gebruik van JSON Schema: Dit is een "vocabulary" die het toelaat om JSON documenten te valideren en te annoteren.
+	- Door gebruik te maken van XML aangezien ook REST XML kan hanteren.
